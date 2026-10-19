@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHOOTER</title>
+<style>
+  body { margin: 0; background: #000; overflow: hidden; }
+  #wrap { display: flex; justify-content: center; align-items: center; height: 100vh; }
+  canvas { background: #1b263b; max-height: 100vh; }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas width="360" height="640"></canvas></div>
+<script>
+var W = 360, H = 640;
+var cv = document.querySelector('canvas');
+
+var g = cv.getContext('2d');
+var rand = function () { return Math.random(); };
+
+var mode = 0; // 0 title, 1 running, 2 dead
+var pts = 0, alive = 0, tbonus = 0, sparks = [];
+var held = {}, tapDir = 0, act = false;
+
+var G = {
+  reset: function () {
+    this.px = W / 2; this.b = []; this.e = []; this.cd = 0; this.sp = 0.5; this.t = 0;
+    this.e.push({ x: this.px, y: 580, v: 0, dead: false });
+  },
+  update: function (dt, c) {
+    var gain = 0, dead = false, self = this;
+    this.t += dt;
+    this.px += ((c.right ? 1 : 0) - (c.left ? 1 : 0)) * 285 * dt;
+    this.px = Math.max(16, Math.min(W - 16, this.px));
+    this.cd -= dt;
+    if ((c.action || c.up) && this.cd <= 0) { this.cd = 0.25; this.b.push({ x: this.px, y: 560, dead: false }); }
+    this.sp -= dt;
+    if (this.sp <= 0) { this.sp = Math.max(0.35, 0.9 - this.t * 0.01); this.e.push({ x: 20 + rand() * (W - 40), y: -20, v: 75 + rand() * 40 + this.t * 2, dead: false }); }
+    this.b.forEach(function (b) { b.y -= 520 * dt; });
+    this.e.forEach(function (e) { e.y += e.v * dt; });
+    this.b.forEach(function (b) { self.e.forEach(function (e) { if (!e.dead && !b.dead && Math.abs(b.x - e.x) < 16 && Math.abs(b.y - e.y) < 16) { e.dead = b.dead = true; gain++; } }); });
+    this.b = this.b.filter(function (b) { return !b.dead && b.y > -10; });
+    if (this.e.some(function (e) { return !e.dead && (e.y > H - 20 || (Math.abs(e.x - self.px) < 20 && Math.abs(e.y - 580) < 20)); })) dead = true;
+    this.e = this.e.filter(function (e) { return !e.dead && e.y < H + 20; });
+    return { gain: gain, dead: dead };
+  },
+  draw: function (c) {
+    c.fillStyle = '#ef476f'; this.e.forEach(function (e) { c.fillRect(e.x - 12, e.y - 12, 24, 24); });
+    c.fillStyle = '#ff0'; this.b.forEach(function (b) { c.fillRect(b.x - 2, b.y - 8, 4, 12); });
+    c.fillStyle = '#06d6a0'; c.fillRect(this.px - 14, 570, 28, 22);
+  }
+};
+
+
+function begin() { pts = 0; tbonus = 0; G.reset(); mode = 1; }
+function press() {
+  if (mode === 0) begin();
+  else if (mode === 2) begin();
+  
+  else act = true;
+}
+document.addEventListener('keydown', function (e) {
+  held[e.code] = true;
+  if (e.code === 'Space' || e.code === 'Enter' || e.code === 'ArrowUp' || e.code === 'KeyW') press();
+});
+document.addEventListener('keyup', function (e) { held[e.code] = false; });
+
+function pointAt(clientX) {
+  var r = cv.getBoundingClientRect(), x = (clientX - r.left) / r.width;
+  tapDir = x < 0.33 ? -1 : x > 0.67 ? 1 : 0;
+  press();
+}
+cv.addEventListener('touchstart', function (e) { e.preventDefault(); pointAt(e.changedTouches[0].clientX); }, { passive: false });
+cv.addEventListener('touchend', function (e) { e.preventDefault(); tapDir = 0; }, { passive: false });
+cv.addEventListener('mousedown', function (e) { pointAt(e.clientX); });
+document.addEventListener('mouseup', function () { tapDir = 0; });
+
+function controls() {
+  return { left: !!(held.ArrowLeft || held.KeyA || tapDir < 0), right: !!(held.ArrowRight || held.KeyD || tapDir > 0),
+           up: !!(held.ArrowUp || held.KeyW), down: !!(held.ArrowDown || held.KeyS), action: act };
+}
+function tick(dt) {
+  if (mode === 1) {
+    alive += dt;
+    
+    var res = G.update(dt, controls());
+    
+    act = false;
+    pts += res.gain;
+    tbonus += dt; if (tbonus >= 1) { tbonus -= 1; pts += 1; }
+    if (res.dead) {
+      
+      mode = 2;
+    }
+  }
+  
+}
+function paint() {
+  g.fillStyle = '#1b263b'; g.fillRect(0, 0, W, H);
+  g.fillStyle = '#eee'; g.textAlign = 'center';
+  if (mode === 0) { g.font = 'bold 26px monospace'; g.fillText('SHOOTER', W / 2, 260); g.font = '15px monospace'; g.fillText('press any key / tap to start', W / 2, 300); return; }
+  G.draw(g);
+  g.fillStyle = '#eee'; g.font = 'bold 20px monospace'; g.fillText('Score ' + pts, W / 2, 34);
+  if (mode === 2) { g.font = 'bold 26px monospace'; g.fillText('YOU LOST', W / 2, 300); g.font = '15px monospace'; g.fillText('tap / Enter to play again', W / 2, 330); }
+}
+var prev = performance.now();
+var loop = setInterval(function () {
+  var now = performance.now(), dt = (now - prev) / 1000; prev = now;
+  if (dt > 0.05) dt = 0.05;
+  tick(dt); paint();
+}, 16);
+window.__game = { score: function () { return pts; }, over: function () { return mode === 2; } };
+</script>
+</body>
+</html>

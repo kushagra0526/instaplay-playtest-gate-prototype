@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FLAPPY</title>
+<style>
+  body { margin: 0; background: #000; overflow: hidden; }
+  #wrap { display: flex; justify-content: center; align-items: center; height: 100vh; }
+  canvas { background: #10002b; max-height: 100vh; }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas width="360" height="640"></canvas></div>
+<script>
+var W = 360, H = 640;
+var cv = document.querySelector('canvas');
+
+var g = cv.getContext('2d');
+var rand = function () { return Math.random(); };
+
+var mode = 0; // 0 title, 1 running, 2 dead
+var pts = 0, alive = 0, tbonus = 0, sparks = [];
+var held = {}, tapDir = 0, act = false;
+
+var G = {
+  reset: function () {
+    this.y = 300; this.vy = 0; this.pipes = []; this.sp = 0.6;
+    
+  },
+  update: function (dt, c) {
+    var gain = 0, dead = false, i, p;
+    if (c.action) this.vy = -425;
+    this.vy += 1341 * dt; this.y += this.vy * dt;
+    this.sp -= dt;
+    if (this.sp <= 0) { this.sp = 1.4; this.pipes.push({ x: W + 30, gap: 150 + rand() * 300, passed: false }); }
+    for (i = 0; i < this.pipes.length; i++) { p = this.pipes[i]; p.x -= 151 * dt; if (!p.passed && p.x + 60 < 78) { p.passed = true; gain++; } }
+    this.pipes = this.pipes.filter(function (q) { return q.x > -70; });
+    
+    if (this.y > H - 20 || this.y < 0) dead = true;
+    for (i = 0; i < this.pipes.length; i++) { p = this.pipes[i]; if (p.x < 102 && p.x + 60 > 78 && (this.y - 12 < p.gap - 85 || this.y + 12 > p.gap + 85)) dead = true; }
+    
+    
+    return { gain: gain, dead: dead };
+  },
+  draw: function (c) {
+    c.fillStyle = '#ff006e';
+    for (var i = 0; i < this.pipes.length; i++) { var p = this.pipes[i]; c.fillRect(p.x, 0, 60, p.gap - 85); c.fillRect(p.x, p.gap + 85, 60, H); }
+    c.fillStyle = '#c77dff'; c.beginPath(); c.arc(90, this.y, 12, 0, 6.3); c.fill();
+  }
+};
+
+
+function begin() { pts = 0; tbonus = 0; G.reset(); mode = 1; }
+function press() {
+  if (mode === 0) begin();
+  else if (mode === 2) begin();
+  
+  else act = true;
+}
+document.addEventListener('keydown', function (e) {
+  held[e.code] = true;
+  if (e.code === 'Space' || e.code === 'Enter' || e.code === 'ArrowUp' || e.code === 'KeyW') press();
+});
+document.addEventListener('keyup', function (e) { held[e.code] = false; });
+
+function pointAt(clientX) {
+  var r = cv.getBoundingClientRect(), x = (clientX - r.left) / r.width;
+  tapDir = x < 0.33 ? -1 : x > 0.67 ? 1 : 0;
+  press();
+}
+cv.addEventListener('touchstart', function (e) { e.preventDefault(); pointAt(e.changedTouches[0].clientX); }, { passive: false });
+cv.addEventListener('touchend', function (e) { e.preventDefault(); tapDir = 0; }, { passive: false });
+cv.addEventListener('mousedown', function (e) { pointAt(e.clientX); });
+document.addEventListener('mouseup', function () { tapDir = 0; });
+
+function controls() {
+  return { left: !!(held.ArrowLeft || held.KeyA || tapDir < 0), right: !!(held.ArrowRight || held.KeyD || tapDir > 0),
+           up: !!(held.ArrowUp || held.KeyW), down: !!(held.ArrowDown || held.KeyS), action: act };
+}
+function tick(dt) {
+  if (mode === 1) {
+    alive += dt;
+    
+    var res = G.update(dt, controls());
+    
+    act = false;
+    pts += res.gain;
+    
+    if (res.dead) {
+      
+      mode = 2;
+    }
+  }
+  tbonus += dt; if (tbonus >= 1) { tbonus -= 1; pts += 1; }
+}
+function paint() {
+  g.fillStyle = '#10002b'; g.fillRect(0, 0, W, H);
+  g.fillStyle = '#eee'; g.textAlign = 'center';
+  if (mode === 0) { g.font = 'bold 26px monospace'; g.fillText('FLAPPY', W / 2, 260); g.font = '15px monospace'; g.fillText('press any key / tap to start', W / 2, 300); return; }
+  G.draw(g);
+  g.fillStyle = '#eee'; g.font = 'bold 20px monospace'; g.fillText('Score ' + pts, W / 2, 34);
+  if (mode === 2) { g.font = 'bold 26px monospace'; g.fillText('YOU LOST', W / 2, 300); g.font = '15px monospace'; g.fillText('tap / Enter to play again', W / 2, 330); }
+}
+var prev = performance.now();
+var loop = setInterval(function () {
+  var now = performance.now(), dt = (now - prev) / 1000; prev = now;
+  if (dt > 0.05) dt = 0.05;
+  tick(dt); paint();
+}, 16);
+window.__game = { score: function () { return pts; }, over: function () { return mode === 2; } };
+</script>
+</body>
+</html>

@@ -1,0 +1,850 @@
+{
+ "summary": {
+  "games": 84,
+  "buggy": 66,
+  "clean": 18,
+  "bugs": {
+   "RUNTIME_ERROR": 6,
+   "BLANK": 6,
+   "KEYBOARD_DEAD": 6,
+   "TOUCH_DEAD": 6,
+   "STUCK": 12,
+   "NONDETERMINISTIC": 6,
+   "FPS_DEPENDENT": 6,
+   "SCORE_WHILE_OVER": 6,
+   "NO_TERMINATION": 6,
+   "INSTANT_OVER": 6
+  },
+  "checker": {
+   "caught": 66,
+   "of": 66,
+   "missed_by_code": {},
+   "false_findings": 0,
+   "false_by_code": {},
+   "clean_games_flagged": 0,
+   "of_clean": 18
+  },
+  "smoke_test": {
+   "caught": 6,
+   "of": 66,
+   "missed_by_code": {
+    "RUNTIME_ERROR": 6,
+    "KEYBOARD_DEAD": 6,
+    "TOUCH_DEAD": 6,
+    "STUCK": 12,
+    "NONDETERMINISTIC": 6,
+    "FPS_DEPENDENT": 6,
+    "SCORE_WHILE_OVER": 6,
+    "NO_TERMINATION": 6,
+    "INSTANT_OVER": 6
+   },
+   "false_findings": 0,
+   "false_by_code": {},
+   "clean_games_flagged": 0,
+   "of_clean": 18
+  },
+  "keyboard_monkey": {
+   "caught": 18,
+   "of": 66,
+   "missed_by_code": {
+    "TOUCH_DEAD": 6,
+    "STUCK": 12,
+    "NONDETERMINISTIC": 6,
+    "FPS_DEPENDENT": 6,
+    "SCORE_WHILE_OVER": 6,
+    "NO_TERMINATION": 6,
+    "INSTANT_OVER": 6
+   },
+   "false_findings": 0,
+   "false_by_code": {},
+   "clean_games_flagged": 0,
+   "of_clean": 18
+  }
+ },
+ "games": [
+  {
+   "file": "games/dev/dodger-clean-00.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/dodger-clean-01.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/dodger-clean-02.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/dodger-crash-0.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'life') (run kb1, t=8.7 s)"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-blank-0.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-keycanvas-0.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-notouch-0.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-softlock-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 26.4 s from t=3.6 s with 126 key presses, and 26.6 s with 135 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-restart-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 26.3 s from t=3.7 s with 124 key presses, and 26.3 s with 133 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-nondet-0.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=0.6 s; crypto.getRandomValues called 96x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-fps-0.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.2 vs 2.8): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-scoreover-0.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 13 -> 14 on the game-over screen (run kb1, t=12.1 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-never-0.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-instant-0.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "STUCK",
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "frames frozen 9.9 s from t=18.3 s with 48 key presses, and 29.7 s with 150 taps; restart/space/tap do nothing",
+    "game over 0.10 s / 0.10 s / 0.10 s after the first input in every run"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-clean-10.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/dodger-clean-11.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/dodger-clean-12.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/dodger-crash-1.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'life') (run kb1, t=8.7 s)"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-blank-1.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-keycanvas-1.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-notouch-1.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-softlock-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 26.4 s from t=3.6 s with 126 key presses, and 26.4 s with 133 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-restart-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 26.4 s from t=3.6 s with 126 key presses, and 26.4 s with 133 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-nondet-1.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=0.6 s; crypto.getRandomValues called 93x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-fps-1.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.2 vs 2.8): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-scoreover-1.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 20 -> 21 on the game-over screen (run kb1, t=14.1 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-never-1.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/dodger-instant-1.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "STUCK",
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "frames frozen 9.9 s from t=18.3 s with 48 key presses, and 29.7 s with 150 taps; restart/space/tap do nothing",
+    "game over 0.10 s / 0.10 s / 0.10 s after the first input in every run"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-clean-00.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/breakout-clean-01.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/breakout-clean-02.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/breakout-crash-0.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'life') (run kb1, t=10.6 s)"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-blank-0.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-keycanvas-0.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-notouch-0.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-softlock-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 24.3 s from t=5.7 s with 115 key presses, and 26.9 s with 137 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-restart-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 19.9 s from t=10.1 s with 93 key presses, and 26.4 s with 133 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-nondet-0.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=0.3 s; crypto.getRandomValues called 16x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-fps-0.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.1 vs 0.9): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-scoreover-0.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 9 -> 10 on the game-over screen (run kb1, t=6.3 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-never-0.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-instant-0.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "game over 0.10 s / 0.10 s / 0.10 s after the first input in every run"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-clean-10.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/breakout-clean-11.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/breakout-clean-12.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/breakout-crash-1.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'life') (run kb1, t=10.5 s)"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-blank-1.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-keycanvas-1.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-notouch-1.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-softlock-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 24.3 s from t=5.7 s with 115 key presses, and 26.9 s with 137 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-restart-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 26.4 s from t=3.6 s with 126 key presses, and 26.4 s with 133 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-nondet-1.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=0.3 s; crypto.getRandomValues called 14x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-fps-1.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.2 vs 0.6): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-scoreover-1.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 9 -> 10 on the game-over screen (run kb1, t=6.3 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-never-1.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/breakout-instant-1.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "game over 0.10 s / 0.10 s / 0.10 s after the first input in every run"
+   ]
+  },
+  {
+   "file": "games/dev/snake-clean-00.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/snake-clean-01.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/snake-clean-02.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/snake-crash-0.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'life') (run kb1, t=8.7 s)"
+   ]
+  },
+  {
+   "file": "games/dev/snake-blank-0.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/dev/snake-keycanvas-0.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/dev/snake-notouch-0.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/dev/snake-softlock-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 28.4 s from t=1.6 s with 134 key presses, and 28.4 s with 145 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/snake-restart-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 28.2 s from t=1.8 s with 133 key presses, and 28.2 s with 144 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/dev/snake-nondet-0.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=0.3 s; crypto.getRandomValues called 18x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/dev/snake-fps-0.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.1 vs 0.6): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/dev/snake-scoreover-0.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 3 -> 4 on the game-over screen (run kb1, t=19.3 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/dev/snake-never-0.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/snake-instant-0.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "game over 0.20 s / 0.20 s / 0.20 s after the first input in every run"
+   ]
+  },
+  {
+   "file": "games/dev/snake-clean-10.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/snake-clean-11.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/snake-clean-12.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/dev/snake-crash-1.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'life') (run kb1, t=13.9 s)"
+   ]
+  },
+  {
+   "file": "games/dev/snake-blank-1.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/dev/snake-keycanvas-1.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/dev/snake-notouch-1.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/dev/snake-softlock-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 28.3 s from t=1.7 s with 134 key presses, and 28.3 s with 144 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/snake-restart-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 28.2 s from t=1.8 s with 133 key presses, and 28.2 s with 144 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/dev/snake-nondet-1.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=0.3 s; crypto.getRandomValues called 14x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/dev/snake-fps-1.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.1 vs 0.7): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/dev/snake-scoreover-1.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 3 -> 4 on the game-over screen (run kb1, t=6.3 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/dev/snake-never-1.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/dev/snake-instant-1.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "game over 0.20 s / 0.20 s / 0.20 s after the first input in every run"
+   ]
+  }
+ ]
+}

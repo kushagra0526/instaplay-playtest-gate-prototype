@@ -1,0 +1,1 @@
+{ "name": "instaplay-playtest-gate-prototype", "private": true, "dependencies": { "puppeteer-core": "^22.15.0" } }

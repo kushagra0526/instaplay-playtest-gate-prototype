@@ -1,0 +1,1178 @@
+[
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-clean-00.html",
+  "family": "dodger",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-clean-01.html",
+  "family": "dodger",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-clean-02.html",
+  "family": "dodger",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-crash-0.html",
+  "family": "dodger",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-blank-0.html",
+  "family": "dodger",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-keycanvas-0.html",
+  "family": "dodger",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-notouch-0.html",
+  "family": "dodger",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-softlock-0.html",
+  "family": "dodger",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-restart-0.html",
+  "family": "dodger",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-nondet-0.html",
+  "family": "dodger",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-fps-0.html",
+  "family": "dodger",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-scoreover-0.html",
+  "family": "dodger",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-never-0.html",
+  "family": "dodger",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-instant-0.html",
+  "family": "dodger",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-clean-10.html",
+  "family": "dodger",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-clean-11.html",
+  "family": "dodger",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-clean-12.html",
+  "family": "dodger",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-crash-1.html",
+  "family": "dodger",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-blank-1.html",
+  "family": "dodger",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-keycanvas-1.html",
+  "family": "dodger",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-notouch-1.html",
+  "family": "dodger",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-softlock-1.html",
+  "family": "dodger",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-restart-1.html",
+  "family": "dodger",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-nondet-1.html",
+  "family": "dodger",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-fps-1.html",
+  "family": "dodger",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-scoreover-1.html",
+  "family": "dodger",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-never-1.html",
+  "family": "dodger",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/dodger-instant-1.html",
+  "family": "dodger",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-clean-00.html",
+  "family": "breakout",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-clean-01.html",
+  "family": "breakout",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-clean-02.html",
+  "family": "breakout",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-crash-0.html",
+  "family": "breakout",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-blank-0.html",
+  "family": "breakout",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-keycanvas-0.html",
+  "family": "breakout",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-notouch-0.html",
+  "family": "breakout",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-softlock-0.html",
+  "family": "breakout",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-restart-0.html",
+  "family": "breakout",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-nondet-0.html",
+  "family": "breakout",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-fps-0.html",
+  "family": "breakout",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-scoreover-0.html",
+  "family": "breakout",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-never-0.html",
+  "family": "breakout",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-instant-0.html",
+  "family": "breakout",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-clean-10.html",
+  "family": "breakout",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-clean-11.html",
+  "family": "breakout",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-clean-12.html",
+  "family": "breakout",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-crash-1.html",
+  "family": "breakout",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-blank-1.html",
+  "family": "breakout",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-keycanvas-1.html",
+  "family": "breakout",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-notouch-1.html",
+  "family": "breakout",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-softlock-1.html",
+  "family": "breakout",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-restart-1.html",
+  "family": "breakout",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-nondet-1.html",
+  "family": "breakout",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-fps-1.html",
+  "family": "breakout",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-scoreover-1.html",
+  "family": "breakout",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-never-1.html",
+  "family": "breakout",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/breakout-instant-1.html",
+  "family": "breakout",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-clean-00.html",
+  "family": "snake",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-clean-01.html",
+  "family": "snake",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-clean-02.html",
+  "family": "snake",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-crash-0.html",
+  "family": "snake",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-blank-0.html",
+  "family": "snake",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-keycanvas-0.html",
+  "family": "snake",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-notouch-0.html",
+  "family": "snake",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-softlock-0.html",
+  "family": "snake",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-restart-0.html",
+  "family": "snake",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-nondet-0.html",
+  "family": "snake",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-fps-0.html",
+  "family": "snake",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-scoreover-0.html",
+  "family": "snake",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-never-0.html",
+  "family": "snake",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-instant-0.html",
+  "family": "snake",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-clean-10.html",
+  "family": "snake",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-clean-11.html",
+  "family": "snake",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-clean-12.html",
+  "family": "snake",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-crash-1.html",
+  "family": "snake",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-blank-1.html",
+  "family": "snake",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-keycanvas-1.html",
+  "family": "snake",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-notouch-1.html",
+  "family": "snake",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-softlock-1.html",
+  "family": "snake",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-restart-1.html",
+  "family": "snake",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-nondet-1.html",
+  "family": "snake",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-fps-1.html",
+  "family": "snake",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-scoreover-1.html",
+  "family": "snake",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-never-1.html",
+  "family": "snake",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "dev",
+  "file": "games/dev/snake-instant-1.html",
+  "family": "snake",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-clean-00.html",
+  "family": "flappy",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-clean-01.html",
+  "family": "flappy",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-clean-02.html",
+  "family": "flappy",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-crash-0.html",
+  "family": "flappy",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-blank-0.html",
+  "family": "flappy",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-keycanvas-0.html",
+  "family": "flappy",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-notouch-0.html",
+  "family": "flappy",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-softlock-0.html",
+  "family": "flappy",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-restart-0.html",
+  "family": "flappy",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-nondet-0.html",
+  "family": "flappy",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-fps-0.html",
+  "family": "flappy",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-scoreover-0.html",
+  "family": "flappy",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-never-0.html",
+  "family": "flappy",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-instant-0.html",
+  "family": "flappy",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-clean-10.html",
+  "family": "flappy",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-clean-11.html",
+  "family": "flappy",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-clean-12.html",
+  "family": "flappy",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-crash-1.html",
+  "family": "flappy",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-blank-1.html",
+  "family": "flappy",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-keycanvas-1.html",
+  "family": "flappy",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-notouch-1.html",
+  "family": "flappy",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-softlock-1.html",
+  "family": "flappy",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-restart-1.html",
+  "family": "flappy",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-nondet-1.html",
+  "family": "flappy",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-fps-1.html",
+  "family": "flappy",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-scoreover-1.html",
+  "family": "flappy",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-never-1.html",
+  "family": "flappy",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/flappy-instant-1.html",
+  "family": "flappy",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-clean-00.html",
+  "family": "runner",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-clean-01.html",
+  "family": "runner",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-clean-02.html",
+  "family": "runner",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-crash-0.html",
+  "family": "runner",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-blank-0.html",
+  "family": "runner",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-keycanvas-0.html",
+  "family": "runner",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-notouch-0.html",
+  "family": "runner",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-softlock-0.html",
+  "family": "runner",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-restart-0.html",
+  "family": "runner",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-nondet-0.html",
+  "family": "runner",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-fps-0.html",
+  "family": "runner",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-scoreover-0.html",
+  "family": "runner",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-never-0.html",
+  "family": "runner",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-instant-0.html",
+  "family": "runner",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-clean-10.html",
+  "family": "runner",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-clean-11.html",
+  "family": "runner",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-clean-12.html",
+  "family": "runner",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-crash-1.html",
+  "family": "runner",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-blank-1.html",
+  "family": "runner",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-keycanvas-1.html",
+  "family": "runner",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-notouch-1.html",
+  "family": "runner",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-softlock-1.html",
+  "family": "runner",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-restart-1.html",
+  "family": "runner",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-nondet-1.html",
+  "family": "runner",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-fps-1.html",
+  "family": "runner",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-scoreover-1.html",
+  "family": "runner",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-never-1.html",
+  "family": "runner",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/runner-instant-1.html",
+  "family": "runner",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-clean-00.html",
+  "family": "shooter",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-clean-01.html",
+  "family": "shooter",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-clean-02.html",
+  "family": "shooter",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-crash-0.html",
+  "family": "shooter",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-blank-0.html",
+  "family": "shooter",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-keycanvas-0.html",
+  "family": "shooter",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-notouch-0.html",
+  "family": "shooter",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-softlock-0.html",
+  "family": "shooter",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-restart-0.html",
+  "family": "shooter",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-nondet-0.html",
+  "family": "shooter",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-fps-0.html",
+  "family": "shooter",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-scoreover-0.html",
+  "family": "shooter",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-never-0.html",
+  "family": "shooter",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-instant-0.html",
+  "family": "shooter",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-clean-10.html",
+  "family": "shooter",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-clean-11.html",
+  "family": "shooter",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-clean-12.html",
+  "family": "shooter",
+  "bug": null,
+  "expect": null
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-crash-1.html",
+  "family": "shooter",
+  "bug": "crash",
+  "expect": "RUNTIME_ERROR"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-blank-1.html",
+  "family": "shooter",
+  "bug": "blank",
+  "expect": "BLANK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-keycanvas-1.html",
+  "family": "shooter",
+  "bug": "keycanvas",
+  "expect": "KEYBOARD_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-notouch-1.html",
+  "family": "shooter",
+  "bug": "notouch",
+  "expect": "TOUCH_DEAD"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-softlock-1.html",
+  "family": "shooter",
+  "bug": "softlock",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-restart-1.html",
+  "family": "shooter",
+  "bug": "restart",
+  "expect": "STUCK"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-nondet-1.html",
+  "family": "shooter",
+  "bug": "nondet",
+  "expect": "NONDETERMINISTIC"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-fps-1.html",
+  "family": "shooter",
+  "bug": "fps",
+  "expect": "FPS_DEPENDENT"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-scoreover-1.html",
+  "family": "shooter",
+  "bug": "scoreover",
+  "expect": "SCORE_WHILE_OVER"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-never-1.html",
+  "family": "shooter",
+  "bug": "never",
+  "expect": "NO_TERMINATION"
+ },
+ {
+  "split": "heldout",
+  "file": "games/heldout/shooter-instant-1.html",
+  "family": "shooter",
+  "bug": "instant",
+  "expect": "INSTANT_OVER"
+ }
+]

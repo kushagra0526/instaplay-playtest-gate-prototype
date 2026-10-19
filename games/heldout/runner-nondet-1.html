@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RUNNER</title>
+<style>
+  body { margin: 0; background: #000; overflow: hidden; }
+  #wrap { display: flex; justify-content: center; align-items: center; height: 100vh; }
+  canvas { background: #10002b; max-height: 100vh; }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas width="360" height="640"></canvas></div>
+<script>
+var W = 360, H = 640;
+var cv = document.querySelector('canvas');
+
+var g = cv.getContext('2d');
+
+var rand = function () { var a = new Uint32Array(1); window.crypto.getRandomValues(a); return a[0] / 4294967296; };
+var mode = 0; // 0 title, 1 running, 2 dead
+var pts = 0, alive = 0, tbonus = 0, sparks = [];
+var held = {}, tapDir = 0, act = false;
+
+var G = {
+  reset: function () {
+    this.y = 0; this.vy = 0; this.obs = []; this.sp = 1.0; this.v = 256;
+    
+  },
+  update: function (dt, c) {
+    var gain = 0, dead = false, i, o;
+    this.v += 6 * dt;
+    if ((c.action || c.up) && this.y === 0) this.vy = 652;
+    this.vy -= 1743 * dt; this.y = Math.max(0, this.y + this.vy * dt); if (this.y === 0) this.vy = 0;
+    this.sp -= dt;
+    if (this.sp <= 0) { this.sp = 0.9 + rand() * 0.9; this.obs.push({ x: W + 20, w: 18 + rand() * 22, h: 30 + rand() * 40, passed: false }); }
+    for (i = 0; i < this.obs.length; i++) { o = this.obs[i]; o.x -= this.v * dt; if (!o.passed && o.x + o.w < 60) { o.passed = true; gain++; } }
+    this.obs = this.obs.filter(function (q) { return q.x > -80; });
+    for (i = 0; i < this.obs.length; i++) { o = this.obs[i]; if (o.x < 84 && o.x + o.w > 60 && this.y < o.h) dead = true; }
+    return { gain: gain, dead: dead };
+  },
+  draw: function (c) {
+    c.fillStyle = '#555'; c.fillRect(0, 560, W, 4);
+    c.fillStyle = '#ff006e'; for (var i = 0; i < this.obs.length; i++) { var o = this.obs[i]; c.fillRect(o.x, 560 - o.h, o.w, o.h); }
+    c.fillStyle = '#c77dff'; c.fillRect(60, 530 - this.y, 24, 30);
+  }
+};
+
+
+function begin() { pts = 0; tbonus = 0; G.reset(); mode = 1; }
+function press() {
+  if (mode === 0) begin();
+  else if (mode === 2) begin();
+  
+  else act = true;
+}
+document.addEventListener('keydown', function (e) {
+  held[e.code] = true;
+  if (e.code === 'Space' || e.code === 'Enter' || e.code === 'ArrowUp' || e.code === 'KeyW') press();
+});
+document.addEventListener('keyup', function (e) { held[e.code] = false; });
+
+function pointAt(clientX) {
+  var r = cv.getBoundingClientRect(), x = (clientX - r.left) / r.width;
+  tapDir = x < 0.33 ? -1 : x > 0.67 ? 1 : 0;
+  press();
+}
+cv.addEventListener('touchstart', function (e) { e.preventDefault(); pointAt(e.changedTouches[0].clientX); }, { passive: false });
+cv.addEventListener('touchend', function (e) { e.preventDefault(); tapDir = 0; }, { passive: false });
+cv.addEventListener('mousedown', function (e) { pointAt(e.clientX); });
+document.addEventListener('mouseup', function () { tapDir = 0; });
+
+function controls() {
+  return { left: !!(held.ArrowLeft || held.KeyA || tapDir < 0), right: !!(held.ArrowRight || held.KeyD || tapDir > 0),
+           up: !!(held.ArrowUp || held.KeyW), down: !!(held.ArrowDown || held.KeyS), action: act };
+}
+function tick(dt) {
+  if (mode === 1) {
+    alive += dt;
+    
+    var res = G.update(dt, controls());
+    
+    act = false;
+    pts += res.gain;
+    tbonus += dt; if (tbonus >= 1) { tbonus -= 1; pts += 1; }
+    if (res.dead) {
+      
+      mode = 2;
+    }
+  }
+  
+}
+function paint() {
+  g.fillStyle = '#10002b'; g.fillRect(0, 0, W, H);
+  g.fillStyle = '#eee'; g.textAlign = 'center';
+  if (mode === 0) { g.font = 'bold 26px monospace'; g.fillText('RUNNER', W / 2, 260); g.font = '15px monospace'; g.fillText('press any key / tap to start', W / 2, 300); return; }
+  G.draw(g);
+  g.fillStyle = '#eee'; g.font = 'bold 20px monospace'; g.fillText('Score ' + pts, W / 2, 34);
+  if (mode === 2) { g.font = 'bold 26px monospace'; g.fillText('YOU LOST', W / 2, 300); g.font = '15px monospace'; g.fillText('tap / Enter to play again', W / 2, 330); }
+}
+var prev = performance.now();
+var loop = setInterval(function () {
+  var now = performance.now(), dt = (now - prev) / 1000; prev = now;
+  if (dt > 0.05) dt = 0.05;
+  tick(dt); paint();
+}, 16);
+window.__game = { score: function () { return pts; }, over: function () { return mode === 2; } };
+</script>
+</body>
+</html>
