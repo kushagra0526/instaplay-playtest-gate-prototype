@@ -1,0 +1,62 @@
+{
+ "games": 84,
+ "buggy": 66,
+ "clean": 18,
+ "bugs": {
+  "RUNTIME_ERROR": 6,
+  "BLANK": 6,
+  "KEYBOARD_DEAD": 6,
+  "TOUCH_DEAD": 6,
+  "STUCK": 12,
+  "NONDETERMINISTIC": 6,
+  "FPS_DEPENDENT": 6,
+  "SCORE_WHILE_OVER": 6,
+  "NO_TERMINATION": 6,
+  "INSTANT_OVER": 6
+ },
+ "checker": {
+  "caught": 66,
+  "of": 66,
+  "missed_by_code": {},
+  "false_findings": 0,
+  "false_by_code": {},
+  "clean_games_flagged": 0,
+  "of_clean": 18
+ },
+ "smoke_test": {
+  "caught": 6,
+  "of": 66,
+  "missed_by_code": {
+   "RUNTIME_ERROR": 6,
+   "KEYBOARD_DEAD": 6,
+   "TOUCH_DEAD": 6,
+   "STUCK": 12,
+   "NONDETERMINISTIC": 6,
+   "FPS_DEPENDENT": 6,
+   "SCORE_WHILE_OVER": 6,
+   "NO_TERMINATION": 6,
+   "INSTANT_OVER": 6
+  },
+  "false_findings": 0,
+  "false_by_code": {},
+  "clean_games_flagged": 0,
+  "of_clean": 18
+ },
+ "keyboard_monkey": {
+  "caught": 18,
+  "of": 66,
+  "missed_by_code": {
+   "TOUCH_DEAD": 6,
+   "STUCK": 12,
+   "NONDETERMINISTIC": 6,
+   "FPS_DEPENDENT": 6,
+   "SCORE_WHILE_OVER": 6,
+   "NO_TERMINATION": 6,
+   "INSTANT_OVER": 6
+  },
+  "false_findings": 0,
+  "false_by_code": {},
+  "clean_games_flagged": 0,
+  "of_clean": 18
+ }
+}

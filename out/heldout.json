@@ -1,0 +1,854 @@
+{
+ "summary": {
+  "games": 84,
+  "buggy": 66,
+  "clean": 18,
+  "bugs": {
+   "RUNTIME_ERROR": 6,
+   "BLANK": 6,
+   "KEYBOARD_DEAD": 6,
+   "TOUCH_DEAD": 6,
+   "STUCK": 12,
+   "NONDETERMINISTIC": 6,
+   "FPS_DEPENDENT": 6,
+   "SCORE_WHILE_OVER": 6,
+   "NO_TERMINATION": 6,
+   "INSTANT_OVER": 6
+  },
+  "checker": {
+   "caught": 66,
+   "of": 66,
+   "missed_by_code": {},
+   "false_findings": 0,
+   "false_by_code": {},
+   "clean_games_flagged": 0,
+   "of_clean": 18
+  },
+  "smoke_test": {
+   "caught": 6,
+   "of": 66,
+   "missed_by_code": {
+    "RUNTIME_ERROR": 6,
+    "KEYBOARD_DEAD": 6,
+    "TOUCH_DEAD": 6,
+    "STUCK": 12,
+    "NONDETERMINISTIC": 6,
+    "FPS_DEPENDENT": 6,
+    "SCORE_WHILE_OVER": 6,
+    "NO_TERMINATION": 6,
+    "INSTANT_OVER": 6
+   },
+   "false_findings": 0,
+   "false_by_code": {},
+   "clean_games_flagged": 0,
+   "of_clean": 18
+  },
+  "keyboard_monkey": {
+   "caught": 18,
+   "of": 66,
+   "missed_by_code": {
+    "TOUCH_DEAD": 6,
+    "STUCK": 12,
+    "NONDETERMINISTIC": 6,
+    "FPS_DEPENDENT": 6,
+    "SCORE_WHILE_OVER": 6,
+    "NO_TERMINATION": 6,
+    "INSTANT_OVER": 6
+   },
+   "false_findings": 0,
+   "false_by_code": {},
+   "clean_games_flagged": 0,
+   "of_clean": 18
+  }
+ },
+ "games": [
+  {
+   "file": "games/heldout/flappy-clean-00.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/flappy-clean-01.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/flappy-clean-02.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/flappy-crash-0.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'age') (run kb1, t=19.2 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-blank-0.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-keycanvas-0.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-notouch-0.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-softlock-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 29.1 s from t=0.9 s with 137 key presses, and 27.5 s with 140 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-restart-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 29.1 s from t=0.9 s with 137 key presses, and 27.4 s with 140 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-nondet-0.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=21.5 s; crypto.getRandomValues called 18x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-fps-0.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.1 vs 14.0): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-scoreover-0.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 0 -> 1 on the game-over screen (run kb1, t=1.3 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-never-0.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-instant-0.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "STUCK",
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "frames frozen 29.7 s from t=0.3 s with 139 key presses, and 29.7 s with 150 taps; restart/space/tap do nothing",
+    "game over 0.10 s / 0.10 s / 0.10 s after the first input in every run"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-clean-10.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/flappy-clean-11.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/flappy-clean-12.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/flappy-crash-1.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'age') (run kb1, t=19.2 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-blank-1.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-keycanvas-1.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-notouch-1.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-softlock-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 29.1 s from t=0.9 s with 137 key presses, and 27.5 s with 140 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-restart-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 29.1 s from t=0.9 s with 137 key presses, and 27.5 s with 140 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-nondet-1.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=10.9 s; crypto.getRandomValues called 17x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-fps-1.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.1 vs 6.8): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-scoreover-1.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 0 -> 1 on the game-over screen (run kb1, t=1.3 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-never-1.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/flappy-instant-1.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "STUCK",
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "frames frozen 29.7 s from t=0.3 s with 139 key presses, and 29.7 s with 150 taps; restart/space/tap do nothing",
+    "game over 0.10 s / 0.10 s / 0.10 s after the first input in every run"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-clean-00.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/runner-clean-01.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/runner-clean-02.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/runner-crash-0.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'age') (run kb1, t=10.0 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-blank-0.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-keycanvas-0.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-notouch-0.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-softlock-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 27.6 s from t=2.4 s with 131 key presses, and 27.6 s with 141 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-restart-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 27.6 s from t=2.4 s with 131 key presses, and 27.6 s with 141 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-nondet-0.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=1.4 s; crypto.getRandomValues called 42x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-fps-0.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.1 vs 1.0): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-scoreover-0.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 2 -> 3 on the game-over screen (run kb1, t=7.6 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-never-0.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-instant-0.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "STUCK",
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "frames frozen 6.3 s from t=3.7 s with 30 key presses, and 10.9 s with 55 taps; restart/space/tap do nothing",
+    "game over 0.10 s / 0.10 s / 0.10 s after the first input in every run"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-clean-10.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/runner-clean-11.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/runner-clean-12.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/runner-crash-1.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'age') (run kb1, t=10.1 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-blank-1.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-keycanvas-1.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-notouch-1.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-softlock-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 27.6 s from t=2.4 s with 131 key presses, and 27.6 s with 141 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-restart-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 25.7 s from t=4.3 s with 121 key presses, and 25.8 s with 131 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-nondet-1.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=1.3 s; crypto.getRandomValues called 36x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-fps-1.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.1 vs 0.9): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-scoreover-1.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 2 -> 3 on the game-over screen (run kb1, t=7.6 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-never-1.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/runner-instant-1.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "STUCK",
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "frames frozen 6.3 s from t=3.7 s with 30 key presses, and 10.9 s with 55 taps; restart/space/tap do nothing",
+    "game over 0.10 s / 0.10 s / 0.10 s after the first input in every run"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-clean-00.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/shooter-clean-01.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/shooter-clean-02.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/shooter-crash-0.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'age') (run kb1, t=9.2 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-blank-0.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-keycanvas-0.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-notouch-0.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-softlock-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 21.5 s from t=8.5 s with 100 key presses, and 21.5 s with 107 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-restart-0.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 22.6 s from t=7.4 s with 106 key presses, and 22.1 s with 109 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-nondet-0.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=0.9 s; crypto.getRandomValues called 60x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-fps-0.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.1 vs 0.7): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-scoreover-0.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 8 -> 9 on the game-over screen (run kb1, t=8.3 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-never-0.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-instant-0.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "game over 0.10 s / 0.10 s / 0.10 s after the first input in every run"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-clean-10.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/shooter-clean-11.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/shooter-clean-12.html",
+   "expect": null,
+   "got": [],
+   "why": []
+  },
+  {
+   "file": "games/heldout/shooter-crash-1.html",
+   "expect": "RUNTIME_ERROR",
+   "got": [
+    "RUNTIME_ERROR"
+   ],
+   "why": [
+    "Cannot read properties of undefined (reading 'age') (run kb1, t=8.9 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-blank-1.html",
+   "expect": "BLANK",
+   "got": [
+    "BLANK"
+   ],
+   "why": [
+    "canvas never drew anything visible in idle, keyboard or touch play"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-keycanvas-1.html",
+   "expect": "KEYBOARD_DEAD",
+   "got": [
+    "KEYBOARD_DEAD"
+   ],
+   "why": [
+    "keyboard play produced exactly the same frames as doing nothing (20 s)"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-notouch-1.html",
+   "expect": "TOUCH_DEAD",
+   "got": [
+    "TOUCH_DEAD"
+   ],
+   "why": [
+    "taps produced exactly the same frames as doing nothing (20 s): unplayable on a phone"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-softlock-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK",
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "frames frozen 22.2 s from t=7.8 s with 104 key presses, and 22.2 s with 109 taps; restart/space/tap do nothing",
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-restart-1.html",
+   "expect": "STUCK",
+   "got": [
+    "STUCK"
+   ],
+   "why": [
+    "frames frozen 22.6 s from t=7.4 s with 106 key presses, and 22.1 s with 109 taps; restart/space/tap do nothing"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-nondet-1.html",
+   "expect": "NONDETERMINISTIC",
+   "got": [
+    "NONDETERMINISTIC"
+   ],
+   "why": [
+    "same seed + same inputs diverged at t=0.9 s; crypto.getRandomValues called 60x (not seedable)"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-fps-1.html",
+   "expect": "FPS_DEPENDENT",
+   "got": [
+    "FPS_DEPENDENT"
+   ],
+   "why": [
+    "at 30 fps the game at time t looks like the 60 fps game at half the elapsed time (diff 0.1 vs 0.7): speed is tied to frame rate"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-scoreover-1.html",
+   "expect": "SCORE_WHILE_OVER",
+   "got": [
+    "SCORE_WHILE_OVER"
+   ],
+   "why": [
+    "score rose 7 -> 8 on the game-over screen (run kb1, t=8.3 s): reward without playing"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-never-1.html",
+   "expect": "NO_TERMINATION",
+   "got": [
+    "NO_TERMINATION"
+   ],
+   "why": [
+    "no game over in 30 + 30 + 60 s of random play: an RL episode never ends"
+   ]
+  },
+  {
+   "file": "games/heldout/shooter-instant-1.html",
+   "expect": "INSTANT_OVER",
+   "got": [
+    "INSTANT_OVER"
+   ],
+   "why": [
+    "game over 0.10 s / 0.10 s / 0.10 s after the first input in every run"
+   ]
+  }
+ ]
+}
